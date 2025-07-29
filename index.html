@@ -1,5 +1,52 @@
 
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name  = $_POST['name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+
+    $to = "dev760490@gmail.com"; // ✅ Aapka email
+    $subject = "New Form Submission";
+    $message = "New user filled the form:\n\n";
+    $message .= "Name: $name\n";
+    $message .= "Email: $email\n";
+    $message .= "Phone: $phone\n";
+
+    $headers = "From: noreply@yourdomain.com"; // optional
+
+    if (mail($to, $subject, $message, $headers)) {
+        $msg = "Thank you! Your details have been sent.";
+    } else {
+        $msg = "Sorry, email could not be sent.";
+    }
+}
+?>
+
 <!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Form</title>
+</head>
+<body>
+    <h2>Contact Us</h2>
+
+    <?php if (!empty($msg)) echo "<p><strong>$msg</strong></p>"; ?>
+
+    <form method="POST" action="">
+        <label>Name:</label><br>
+        <input type="text" name="name" required><br><br>
+
+        <label>Email:</label><br>
+        <input type="email" name="email" required><br><br>
+
+        <label>Phone:</label><br>
+        <input type="text" name="phone" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -197,8 +244,8 @@
   <input type="text" name="phone" placeholder="Your Phone Number" required><br><br>
   <input type="text" name="Address" placeholder="Your full Address " required><br><br>
         <button type="submit">Submit</button>
-</form>
-
+    </form>
+    
 </section>
 
 <footer style="background-color:#0c9707; color:white; text-align:center; padding:20px; margin-top:40px;">
