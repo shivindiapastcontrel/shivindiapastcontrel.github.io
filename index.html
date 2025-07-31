@@ -215,48 +215,55 @@
 </header>
 
 
+<!-- ✅ Image Slider Start -->
+<div class="slider-container">
+  <div class="slider">
+    <img src="1.jpg" alt="Cockroach">
+    <img src="img2.jpg" alt="Termite">
+    <img src="img3.jpg" alt="Ant">
+    <img src="img4.jpg" alt="Bedbug">
+  </div>
+</div>
+
 <style>
-.slider {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 400px;
-}
-.slides {
-  display: flex;
-  width: 400%;
-  animation: slideAnimation 20s infinite;
-}
-.slide {
-  width: 100%;
-  position: relative;
-  flex-shrink: 0;
-}
-.slider-container {
-  width: 100%;
-  overflow: hidden;
-  max-height: 250px;
-  background-color: black; /* prevent white screen */
-}
+  .slider-container {
+    width: 100%;
+    overflow: hidden;
+    max-height: 250px;
+    background-color: black; /* Prevent white gap */
+  }
 
-.slider img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-}
+  .slider {
+    display: flex;
+    width: 400%; /* 4 images */
+    animation: slide 24s infinite;
+  }
 
-@keyframes slideAnimation {
-  0%   { transform: translateX(0%); }
-  20%  { transform: translateX(0%); }
-  25%  { transform: translateX(-100%); }
-  45%  { transform: translateX(-100%); }
-  50%  { transform: translateX(-200%); }
-  70%  { transform: translateX(-200%); }
-  75%  { transform: translateX(-300%); }
-  95%  { transform: translateX(-300%); }
-  100% { transform: translateX(0%); }
-}
+  .slider img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+
+  @keyframes slide {
+    0% { transform: translateX(0%); }
+    20.83% { transform: translateX(0%); }
+    25% { transform: translateX(-100%); }
+    45.83% { transform: translateX(-100%); }
+    50% { transform: translateX(-200%); }
+    70.83% { transform: translateX(-200%); }
+    75% { transform: translateX(-300%); }
+    95.83% { transform: translateX(-300%); }
+    100% { transform: translateX(0%); }
+  }
+
+  @media screen and (max-width: 600px) {
+    .slider img {
+      height: 180px;
+    }
+  }
 </style>
+<!-- ✅ Image Slider End -->
 
 <div class="slider">
   <div class="slides">
