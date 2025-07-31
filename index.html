@@ -214,57 +214,73 @@
     <h1>shiv India Pest Control</h1>
 </header>
 
-
-<!-- ✅ Image Slider Start -->
+<!-- ✅ Image Slider -->
 <div class="slider-container">
-  <div class="slider">
-    <img src="image1.jpg" alt="Cockroach">
-    <img src="image2.jpg" alt="Termite">
-    <img src="image3.jpg" alt="Ant">
-    <img src="image4.jpg" alt="Bedbug">
+  <div class="slider-track" id="sliderTrack">
+    <img src="image1.jpg" alt="Image 1">
+    <img src="image2.jpg" alt="Image 2">
+    <img src="image3.jpg" alt="Image 3">
+    <img src="image4.jpg" alt="Image 4">
   </div>
+  <button class="slider-btn prev-btn" onclick="moveSlide(-1)">❮</button>
+  <button class="slider-btn next-btn" onclick="moveSlide(1)">❯</button>
 </div>
 
 <style>
   .slider-container {
     width: 100%;
-    overflow: hidden;
     max-height: 250px;
-    background-color: black; /* Prevent white gap */
+    overflow: hidden;
+    position: relative;
+    background: black;
   }
-
-  .slider {
+  .slider-track {
     display: flex;
-    width: 400%; /* 4 images */
-    animation: slide 12s infinite;
+    transition: transform 0.5s ease-in-out;
   }
-
-  .slider img {
-    width: 100%;
+  .slider-track img {
+    width: 100vw;
     height: 250px;
     object-fit: cover;
+    flex-shrink: 0;
   }
-
-  @keyframes slide {
-    0% { transform: translateX(0%); }
-    20.83% { transform: translateX(0%); }
-    25% { transform: translateX(-100%); }
-    45.83% { transform: translateX(-100%); }
-    50% { transform: translateX(-200%); }
-    70.83% { transform: translateX(-200%); }
-    75% { transform: translateX(-300%); }
-    95.83% { transform: translateX(-300%); }
-    100% { transform: translateX(0%); }
+  .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.6);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 18px;
+    font-weight: bold;
   }
-
+  .prev-btn { left: 10px; }
+  .next-btn { right: 10px; }
   @media screen and (max-width: 600px) {
-    .slider img {
+    .slider-track img {
       height: 180px;
     }
   }
 </style>
-<!-- ✅ Image Slider End -->
 
+<script>
+  let index = 0;
+  const track = document.getElementById('sliderTrack');
+  const totalSlides = track.children.length;
+
+  function moveSlide(direction) {
+    index += direction;
+    if (index < 0) index = totalSlides - 1;
+    if (index >= totalSlides) index = 0;
+    track.style.transform = 'translateX(' + (-index * 100) + 'vw)';
+  }
+
+  setInterval(() => {
+    moveSlide(1);
+  }, 5000);
+</script>
 
 
 <section>
